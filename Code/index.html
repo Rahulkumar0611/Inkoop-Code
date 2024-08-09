@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Input UI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #output {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Number Input UI</h1>
+    <label for="numberInput">Enter a number:</label>
+    <input type="number" id="numberInput">
+    <div id="output"></div>
+
+    <script>
+        const numberInput = document.getElementById('numberInput');
+        const output = document.getElementById('output');
+
+        numberInput.addEventListener('input', function() {
+            const value = parseInt(numberInput.value, 10);
+
+            if (isNaN(value)) {
+                output.textContent = '';
+                return;
+            }
+
+            if (value < 0) {
+                output.textContent = 'Enter a positive value';
+            } else if (value % 2 === 0) {
+                output.textContent = `Next 3 even numbers: ${value + 2}, ${value + 4}, ${value + 6}`;
+            } else {
+                output.textContent = `Next 3 odd numbers: ${value + 2}, ${value + 4}, ${value + 6}`;
+            }
+        });
+    </script>
+</body>
+</html>
